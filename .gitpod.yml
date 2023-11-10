@@ -10,6 +10,8 @@ tasks:
     before: |
       cd $PROJECT_ROOT
       source ./bin/install_aws_cli.sh
+      source ./bin/add_tf_alias.sh
+      source ./bin/terraform_credentials.sh
       cd $PROJECT_ROOT
 vscode:
   extensions:
