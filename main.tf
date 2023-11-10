@@ -40,14 +40,6 @@ resource "random_string" "bucket_name" {
   lower = true
   upper = false
 }
-resource "random_id" "bucket_name" {
-  keepers = {
-    # Generate a new id each time we switch to a new AMI id
-    ami_id = var.ami_id
-  }
-
-  byte_length = 8
-}
 
 output "random_bucket_name" {
     value = random_string.bucket_name.id
