@@ -6,8 +6,13 @@ if [ -z "$TERRAFORM_TOKEN" ]; then
   exit 1
 fi
 
+# Percorso della directory .terraform.d
+dir_path="/home/gitpod/.terraform.d/"
 # Percorso del file credentials.tfrc.json
-file_path="/home/gitpod/.terraform.d/credentials.tfrc.json"
+file_path="${dir_path}credentials.tfrc.json"
+
+# Crea la directory se non esiste
+mkdir -p "$dir_path"
 
 # Crea il contenuto del file JSON
 json_content=$(cat <<EOF
@@ -23,3 +28,7 @@ EOF
 
 # Scrivi il contenuto nel file
 echo "$json_content" > "$file_path"
+
+# Notifica l'avvenuta creazione del file
+echo "File $file_path creato con successo. Contenuto:"
+cat "$file_path"
